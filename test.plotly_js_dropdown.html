@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plotly Dropdown Example</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+<div id="plot"></div>
+
+<script>
+    // Sample data sets
+    var trace1 = {
+        x: [1, 2, 3, 4],
+        y: [10, 15, 13, 17],
+        type: 'scatter',
+        name: 'Dataset 1'
+    };
+    var trace2 = {
+        x: [1, 2, 3, 4],
+        y: [16, 5, 11, 9],
+        type: 'scatter',
+        name: 'Dataset 2'
+    };
+
+    // Initial plot
+    var data = [trace1];
+    var layout = {
+        title: 'Interactive Plot with Dropdown',
+        updatemenus: [{
+            x: 0.5,
+            y: 1.2,
+            xanchor: 'center',
+            yanchor: 'top',
+            buttons: [{
+                method: 'update',
+                args: [{'y': [trace1.y]}, {'title': 'Dataset 1'}],
+                label: 'Dataset 1'
+            }, {
+                method: 'update',
+                args: [{'y': [trace2.y]}, {'title': 'Dataset 2'}],
+                label: 'Dataset 2'
+            }]
+        }]
+    };
+
+    Plotly.newPlot('plot', data, layout);
+
+</script>
+
+</body>
+</html>
